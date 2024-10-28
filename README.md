@@ -4,8 +4,17 @@ Simple "download selected" extension for downloading Magnet links using the Trib
 
 Select a valid Magnet link, right click, choose "Download Magnet link with Tribler" in the dropdown menu.
 
-Requires Tribler API endpoint access and API key set in background.js (currently hard-coded and a TODO item).
+Configure it with:
 
-No tracking, no analytics, no telemetry, no ads. 
+- Tribler API endpoint access (http://127.0.0.1:3100 - change it to your Tribler API endpoint or modify Tribler API endpoint to that port)
+- API key (set to Tribler default) 
 
-Credit: forked https://github.com/simennj/selectedLinksDownloader
+Currently thse are hard-coded in background.js and settings modal is a TODO item.
+
+## Privacy
+
+no tracking, no analytics, no telemetry, no ads.
+
+## Credit
+
+Forked https://github.com/simennj/selectedLinksDownloader.
