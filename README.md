@@ -4,19 +4,23 @@ Simple "download selected" extension for downloading Magnet links using the Trib
 
 Select a valid Magnet link, right click, choose "Download Magnet link with Tribler" in context menu.
 
-Configure it with:
+v1.0 has the following hard-coded in background.js and settings modal is a TODO item, so to use v1.0 you need to configure:
 
-- Tribler API endpoint access (http://127.0.0.1:3100 - change it to your Tribler API endpoint or modify Tribler API endpoint to that port)
-- API key (set to Tribler default) 
+- Tribler API: change Tribler's port to http://127.0.0.1:3100 (see background.js) 
+- API key: set it to Tribler default (see background.js) 
 
-Currently these are hard-coded in background.js and settings modal is a TODO item.
+That is because the Mozilla-signed extension can then be used without modifications/editing. If you want you can install and then edit these on hard disk.
 
 This add-on was originally developed for easy download from xx Network Haven spaces (see https://armchairancap.github.io/blog/2024/10/29/xx-haven-with-tribler#do-we-actually-need-any-integration).
 
 ## Requirements
 
 - Tribler 8
-- Modern (2024) version of Firefox
+- Modern version of Firefox (up to 131, 64-bit)
+
+## Known issues
+
+Firefox Browser Developer 132.0b9 can't work with xx Network Haven (suspected WASM issues), but the extension should work fine with other sites.
 
 ## Privacy
 
@@ -26,6 +30,11 @@ No adds, no tracking, no analytics, no telemetry.
 
 https://github.com/armchairancap/magnet-link-downloader-tribler-firefox
 
-## Credit
+## License
 
-Forked https://github.com/simennj/selectedLinksDownloader.
+Unknown (see Credits).
+
+## Credits
+
+Modified from https://github.com/simennj/selectedLinksDownloader.
+
