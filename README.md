@@ -8,6 +8,7 @@ v1.0 has the following hard-coded in background.js and settings modal is a TODO 
 
 - Tribler API: change Tribler's port to http://127.0.0.1:3100 (see background.js) 
 - API key: set it to Tribler default (see background.js) 
+- Download location in the API call. Maybe OS X and Windows users need a different directory. 
 
 That is because the Mozilla-signed extension can then be used without modifications/editing. If you want you can install and then edit these on hard disk.
 
@@ -21,6 +22,8 @@ This add-on was originally developed for easy download from xx Network Haven spa
 ## Known issues
 
 Firefox Browser Developer 132.0b9 can't work with xx Network Haven (suspected WASM issues), but the extension should work fine with other sites.
+
+Download location set in the API call should probably be OS-specific and require a few lines of JS to determine.
 
 ## Privacy
 
