@@ -1,17 +1,17 @@
-# Magnet Link Downloader for Tribler
+# Magnet Link Downloader for Tribler API
 
 Simple "download selected" extension for downloading Magnet links using the Tribler API.
 
-Select a valid Magnet link, right click, choose "Download Magnet link with Tribler" in the dropdown menu.
+Select a valid Magnet link, right click, choose "Download Magnet link with Tribler" in context menu.
 
 Configure it with:
 
 - Tribler API endpoint access (http://127.0.0.1:3100 - change it to your Tribler API endpoint or modify Tribler API endpoint to that port)
 - API key (set to Tribler default) 
 
-Currently thse are hard-coded in background.js and settings modal is a TODO item.
+Currently these are hard-coded in background.js and settings modal is a TODO item.
 
-Originally developed for easy download from xx Network Haven (see https://armchairancap.github.io/blog/2024/10/29/xx-haven-with-tribler#do-we-actually-need-any-integration).
+This add-on was originally developed for easy download from xx Network Haven spaces (see https://armchairancap.github.io/blog/2024/10/29/xx-haven-with-tribler#do-we-actually-need-any-integration).
 
 ## Requirements
 
