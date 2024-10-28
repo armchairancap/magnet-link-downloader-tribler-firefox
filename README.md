@@ -11,6 +11,11 @@ Configure it with:
 
 Currently thse are hard-coded in background.js and settings modal is a TODO item.
 
+## Requirements
+
+- Tribler 8
+- Modern (2024) version of Firefox
+
 ## Privacy
 
 no tracking, no analytics, no telemetry, no ads.
