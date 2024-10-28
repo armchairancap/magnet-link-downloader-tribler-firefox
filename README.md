@@ -11,6 +11,8 @@ Configure it with:
 
 Currently thse are hard-coded in background.js and settings modal is a TODO item.
 
+Originally developed for easy download from xx Network Haven (see https://armchairancap.github.io/blog/2024/10/29/xx-haven-with-tribler#do-we-actually-need-any-integration).
+
 ## Requirements
 
 - Tribler 8
@@ -18,7 +20,11 @@ Currently thse are hard-coded in background.js and settings modal is a TODO item
 
 ## Privacy
 
-no tracking, no analytics, no telemetry, no ads.
+No adds, no tracking, no analytics, no telemetry.
+
+## Source code
+
+https://github.com/armchairancap/magnet-link-downloader-tribler-firefox
 
 ## Credit
 
