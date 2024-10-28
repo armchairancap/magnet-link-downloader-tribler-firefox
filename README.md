@@ -1,7 +1,11 @@
-# Selected Links Downloader WebExtension
+# Magnet Link Downloader for Tribler
 
-A simple WebExtension for downloading multiple links at the same time.
-Simply drag and select the links, right click, and choose "Download selected links" in the dropdown menu.
+Simple "download selected" extension for downloading Magnet links using the Tribler API.
 
-Can be installed from
-https://addons.mozilla.org/en-US/firefox/addon/selected-links-downloader/
+Select a valid Magnet link, right click, choose "Download Magnet link with Tribler" in the dropdown menu.
+
+Requires Tribler API endpoint access and API key set in background.js (currently hard-coded and a TODO item).
+
+No tracking, no analytics, no telemetry, no ads. 
+
+Credit: forked https://github.com/simennj/selectedLinksDownloader

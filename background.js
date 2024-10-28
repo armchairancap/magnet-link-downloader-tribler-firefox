@@ -1,51 +1,59 @@
+// const requestURL = 'http://127.0.0.1:3100/api/downloads?get_peers=false&get_pieces=false&get_files=true';
+const api_endpoint = 'http://127.0.0.1:3100/api/downloads?get_peers=false&get_pieces=false&get_files=true';
+
+function log(msg, force) {
+	if (log.enabled || force) {
+		console.log('Tribler downloader: ' + msg);
+	}
+}
+log.enabled = true;
+
 browser.contextMenus.create({
-    id: "selected-links-download",
-    title: "Download selected links",
+    id: "selected-link-download",
+    title: "Download Magnet link with Tribler",
 });
+
 browser.contextMenus.onClicked.addListener((info, tab) => {
-    if (info.menuItemId === "selected-links-download") {
-        downloadSelectedLinks(tab.id);
+    if (info.menuItemId === "selected-link-download") {
+        const selectedText = info.selectionText;
+        if (selectedText && selectedText.startsWith("magnet:")) {
+            download(selectedText);
+        } else {
+            log('No valid magnet link selected', true);
+        }
     }
 });
 
-function downloadSelectedLinks(tabid) {
-    getSelectedUrls(tabid).then(
-        // The result from executeScript is an array
-        // where the actual result is in position 0
-        (result) => result[0].forEach(download)
-    );
-}
+/**
+  * Downloads a file from the given URL by sending a PUT request to the local API.
+  * 
+  * @param {string} url - The magnet URL of the file to be downloaded.
+  * @returns {void}
+*/
+function download(selectedText) {
+    let api_payload = { "anon_hops": 2, "safe_seeding": true, "destination": "/tmp/", "uri": selectedText };
+    
+    let json_payload = JSON.stringify(api_payload);
+    // check if json_payload is valid JSON
+    try {
+        JSON.parse(json_payload);
+    } catch (error) {
+        console.error('Invalid JSON payload: ', error);
+        return;
+    }
 
-function getSelectedUrls(tabid) {
-    return loadSelectionScriptIfNecessary(tabid).then(
-        () => browser.tabs.executeScript(tabid, {code: "retrieveSelection();"})
-    ).catch((error) => {
-        // This could happen if the extension is not allowed to run code in
-        // the page, for example if the tab is a privileged page.
-        console.error("Failed to copy text: " + error);
-    });
-}
+    const options = {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json',
+            'accept': 'application/json',
+            'X-Api-Key': 'changeme'
+        },
+        body: json_payload
+    };
 
-function loadSelectionScriptIfNecessary(tabid) {
-    return browser.tabs.executeScript({
-        code: "typeof retrieveSelection === 'function';",
-    }).then((results) => {
-        // The content script's last expression will be true if the function
-        // has been defined. If this is not the case, then we need to run
-        // selection-retriever.js to define function retrieveSelection.
-        if (!results || results[0] !== true) {
-            return browser.tabs.executeScript(tabid, {
-                file: "selection-retriever.js",
-            });
-        }
-    });
-}
-
-function download(url) {
-    const request = new XMLHttpRequest();
-    request.addEventListener("load", function () {
-        const downloading = browser.downloads.download({url: this.responseURL});
-    });
-    request.open("HEAD", url);
-    request.send();
-}
+    fetch(api_endpoint, options)
+        .then(response => response.json())
+        .then(data => console.log(data))
+        .catch(error => console.error('Error:', error));
+};

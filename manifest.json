@@ -1,7 +1,7 @@
 {
     "manifest_version": 2,
-    "name": "Selected Links Downloader",
-    "description": "Download selected links.",
+    "name": "Magnet Links Downloader for Tribler API (Firefox Extension)",
+    "description": "Download selected Magnet links using Tribler API.",
     "version": "1.0",
 
     "background": {
@@ -9,10 +9,17 @@
             "background.js"
         ]
     },
-
+    "content_scripts": [
+        {
+        "matches": ["<all_urls>"]
+        }
+    ],
     "permissions": [
         "contextMenus",
-        "downloads",
-        "*://*/"
+        "webRequest", 
+        "menus",
+        "scripting",
+        "activeTab",
+        "<all_urls>"
     ]
 }
